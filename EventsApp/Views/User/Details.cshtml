@@ -1,0 +1,49 @@
+﻿@model EventsApp.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+<h1>Личный кабинет</h1>
+
+<div>
+    <h4>Личный кабинет</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Имя пользователя
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            Эмейл
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+
+</div>
+@if (ViewBag.Events != null)
+    {
+        @foreach (var appEvent in ViewBag.Events)
+            {
+                <div class="border row p-2">
+                    <div class="col-4">
+                        <h6>@appEvent.Name</h6>
+                    </div>
+                    <div class="col-4">
+                        <span>@appEvent.Time</span>
+                    </div>
+                    <div class="col-4">
+                        <p>@appEvent.Description</p>
+                    </div>                
+                </div>
+            }
+    } 
+<div>   
+    <a asp-action="Index" asp-controller="Home">На главную</a>
+</div>

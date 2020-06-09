@@ -1,0 +1,66 @@
+﻿@model EventsApp.Models.Event
+@using Microsoft.AspNetCore.Mvc;
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Name</h1>
+
+<div>
+    <h4>Событие</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Seats)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seats)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+    </dl>
+</div>
+@if (User.Identity.IsAuthenticated)
+    {
+        <div class="row mt-2">
+            <button onclick="sendData(@Model.Id, '@Url.Action("AddEvent", "User")')" class="btn btn-primary" type="submit">Записаться на событие</button>
+        </div> 
+} else if (ViewBag["Message"] != null)
+    {
+        @ViewBag["Mesage"]
+    }
+}
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-controller="Home" asp-action="Index">Вернуться назад</a>
+</div>
+
+<script>
+    function sendData(id, path) {
+        console.log(id)
+        console.log(path)
+        $.ajax({
+            type: 'POST',
+            url: path,
+            data: {"id": id}
+        })
+    }
+</script>
