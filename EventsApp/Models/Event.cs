@@ -10,5 +10,6 @@ namespace EventsApp.Models
         public int Seats { get; set; }
         public DateTime Time { get; set; }
         public virtual IList<ApplicationUserEvent> ApplicationUserEvents { get; set; }
+        public virtual IList<FileUpload> Files { get; set; }
     }
 }

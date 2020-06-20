@@ -69,7 +69,7 @@ namespace EventsApp.Controllers
                 appEvent.Name = newEvent.Name;
                 appEvent.Time = newEvent.Time;
                 appEvent.Description = newEvent.Description;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
             catch

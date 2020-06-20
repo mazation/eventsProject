@@ -10,6 +10,7 @@ namespace EventsApp.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationUserEvent> ApplicationUserEvents { get; set; }
+        public DbSet<FileUpload> FileUploads { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {

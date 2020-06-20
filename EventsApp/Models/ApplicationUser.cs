@@ -5,7 +5,6 @@ namespace EventsApp.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public virtual IList<ApplicationUserEvent> ApplicationUserEvents { get; set; }
-
+            public virtual IList<ApplicationUserEvent> ApplicationUserEvents { get; set; }
     }
 }

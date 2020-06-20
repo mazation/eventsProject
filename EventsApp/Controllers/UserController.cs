@@ -27,6 +27,7 @@ namespace EventsApp.Controllers
         }
 
         // GET: User/Details/5
+        [Authorize]
         public ActionResult Details(string? username)
         {
             string _username;
